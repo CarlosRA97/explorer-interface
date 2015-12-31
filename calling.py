@@ -1,3 +1,6 @@
 from fibonacci import *
 
-fib(raw_input("Introduce un numero: "))
+
+intro = input("Introduce un numero: ")
+
+fib(intro)
