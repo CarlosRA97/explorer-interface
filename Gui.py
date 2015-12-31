@@ -1,14 +1,16 @@
 from Tkinter import *
 
 
-############################ GUI DE LA APLICACION #######################################
+################################### GUI DE LA APLICACION #######################################
 
 #Crea la ventana
 raiz = Tk()
 
 #Modifica la ventana y lo que hay dentro
-raiz.title('')
-raiz.geometry('300x400')
+
+raiz.title('') 				# Titulo de la ventana
+
+raiz.geometry('300x400') 	# Dimensiones de la ventana
 
     #Ventana
 ventana = Frame(raiz)
