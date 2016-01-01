@@ -6,4 +6,6 @@ if buscar in lista:
 	print "Se encuentra en la posicion",lista.index(buscar)+1,"de la lista"
 else:
 	print "No esta en la lista"
+	lista.append(buscar)
+	print "El elemento a buscar se agrego a la lista"
 
