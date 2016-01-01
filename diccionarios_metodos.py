@@ -9,3 +9,7 @@ print ""
 print diccionario.items()
 print ""
 print diccionario.keys()
+print ""
+print diccionario.values()
+print ""
+print diccionario.pop(4)
