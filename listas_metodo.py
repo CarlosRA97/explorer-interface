@@ -8,4 +8,4 @@ else:
 	print "No esta en la lista"
 	lista.append(buscar)
 	print "El elemento a buscar se agrego a la lista"
-
+	print lista
