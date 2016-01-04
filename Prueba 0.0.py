@@ -1,6 +1,17 @@
 from tkinter import *
+
+
+
+def hacer_click():
+    _valor = str(entrada_txt.get())
+    tag.config(text="Texto copiado!")
+
+
+######### TE RECOMIENDO QUE PONGAS EL CODIGO QUE QUIERAS ARIIBA DE ESTA LINEA ###########
+
+## A PARTIR DE AQUI SE CREA LA VENTANA ##
 raiz = Tk()
- 
+
 raiz.title('Hola mundo')
 raiz.geometry('300x400')
 
