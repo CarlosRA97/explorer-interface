@@ -1,15 +1,16 @@
 from RPi.GPIO import *
+from time import sleep
 
 setmode(BCM)
 setwarnings(False)
 
-led = input("Escribe el pin: ")
-
+pin = raw_input("pin?: ")
+led = int(pin)
 setup(led, OUT)
 
 onoff = raw_input("On or Off: ")
 
 if onoff == "on":
-        output(led, 1)
+	output(led, 1)
 elif onoff == "off":
-        output(led, 0)
+	output(led, 0)
