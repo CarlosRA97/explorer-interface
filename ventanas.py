@@ -5,7 +5,7 @@ class Ventana(object):
 
 		#Modifica la ventana y lo que hay dentro
 		raiz.title('Sha1 Generator')
-		raiz.geometry('195x108')
+		raiz.geometry('300x250')
 
 		    #Ventana
 		ventana = Frame(raiz)
