@@ -8,13 +8,20 @@ lista = [2,3,4,17,27,22,10,9,11,14,15,18,23,24,25,8,7]
 setmode(BCM)
 setwarnings(False)
 
-def onoff(pin):
-	print pin
+def on(pin):
+	setup(pin, OUT)
+	output(pin,1)
 
-def OnButtonClick(self, button):
-	print buttonself.
-	tkMessageBox.showinfo("You clicked the pin")
+def off(pin):
+	setup(pin, OUT)
+	output(pin,0)
 
+def OnButtonClick(button):
+	result = tkMessageBox.askyesno("GPIO PIN","Do you want pin %s turn on?" % button)
+	if result:
+		on(button)
+	else:
+		off(button)
 
 
 #Crea la ventana
@@ -39,47 +46,47 @@ tag.grid(column=1, row=1, pady=(5,5))
 button3v3 = Button(ventana, text="3v3")
 button3v3.grid(column=1, row=2, padx=(5,5), pady=(5,5))
 
-self.button2 = Button(self,ventana, text="2|SDA")
-self.button2.grid(column=1, row=3, padx=(5,5), pady=(5,5))
-self.button2.config(command = lambda button=button2: self.OnButtonClick(button))
+button2 = Button(ventana, text="2|SDA")
+button2.grid(column=1, row=3, padx=(5,5), pady=(5,5))
+button2.config(command = lambda: OnButtonClick(2))
 
-self.button3 = Button(self,ventana, text="3|SCL")
-self.button3.grid(column=1, row=4, padx=(5,5), pady=(5,5))
-self.button3.config(command = lambda button=button3: self.OnButtonClick(button))
+button3 = Button(ventana, text="3|SCL")
+button3.grid(column=1, row=4, padx=(5,5), pady=(5,5))
+button3.config(command = lambda: OnButtonClick(3))
 
-self.button4 = Button(self,ventana, text="4")
-self.button4.grid(column=1, row=5, padx=(5,5), pady=(5,5))
-self.button4.config(command = lambda button=button4: self.OnButtonClick(button))
+button4 = Button(ventana, text="4")
+button4.grid(column=1, row=5, padx=(5,5), pady=(5,5))
+button4.config(command = lambda: OnButtonClick(4))
 
 buttongnd = Button(ventana, text="GND")
 buttongnd.grid(column=1, row=6, padx=(5,5), pady=(5,5))
 
-self.button17 = Button(self,ventana, text="17")
-self.button17.grid(column=1, row=7, padx=(5,5), pady=(5,5))
-self.button17.config(command = lambda button=button17: self.OnButtonClick(button))
+button17 = Button(ventana, text="17")
+button17.grid(column=1, row=7, padx=(5,5), pady=(5,5))
+button17.config(command = lambda: OnButtonClick(17))
 
-self.button27 = Button(self,ventana, text="27")
-self.button27.grid(column=1, row=8, padx=(5,5), pady=(5,5))
-self.button27.config(command = lambda button=button27: self.OnButtonClick(button))
+button27 = Button(ventana, text="27")
+button27.grid(column=1, row=8, padx=(5,5), pady=(5,5))
+button27.config(command = lambda: OnButtonClick(27))
 
-self.button22 = Button(self,ventana, text="22")
-self.button22.grid(column=1, row=9, padx=(5,5), pady=(5,5))
-self.button22.config(command = lambda button=button22: self.OnButtonClick(button))
+button22 = Button(ventana, text="22")
+button22.grid(column=1, row=9, padx=(5,5), pady=(5,5))
+button22.config(command = lambda: OnButtonClick(22))
 
 button3v32 = Button(ventana, text="3v3")
 button3v32.grid(column=1, row=10, padx=(5,5), pady=(5,5))
 
-self.button10 = Button(self,ventana, text="10|MOSI")
-self.button10.grid(column=1, row=11, padx=(5,5), pady=(5,5))
-self.button10.config(command = lambda button=button10: self.OnButtonClick(button))
+button10 = Button(ventana, text="10|MOSI")
+button10.grid(column=1, row=11, padx=(5,5), pady=(5,5))
+button10.config(command = lambda: OnButtonClick(10))
 
-self.button9 = Button(self,ventana, text="9|MISO")
-self.button9.grid(column=1, row=12, padx=(5,5), pady=(5,5))
-self.button9.config(command = lambda button=button9: self.OnButtonClick(button))
+button9 = Button(ventana, text="9|MISO")
+button9.grid(column=1, row=12, padx=(5,5), pady=(5,5))
+button9.config(command = lambda: OnButtonClick(9))
 
-self.button11 = Button(self,ventana, text="11|SCLK")
-self.button11.grid(column=1, row=13, padx=(5,5), pady=(5,5))
-self.button11.config(command = lambda button=button11: self.OnButtonClick(button))
+button11 = Button(ventana, text="11|SCLK")
+button11.grid(column=1, row=13, padx=(5,5), pady=(5,5))
+button11.config(command = lambda: OnButtonClick(11))
 
 buttongnd2 = Button(ventana, text="GND")
 buttongnd2.grid(column=1, row=14, padx=(5,5), pady=(5,5))
@@ -96,43 +103,43 @@ button5v2.grid(column=2, row=3, padx=(5,5), pady=(5,5))
 buttongnd3 = Button(ventana, text="GND")
 buttongnd3.grid(column=2, row=4, padx=(5,5), pady=(5,5))
 
-self.button14 = Button(self,ventana, text="14|TXD")
-self.button14.grid(column=2, row=5, padx=(5,5), pady=(5,5))
-self.button14.config(command = lambda button=button14: self.OnButtonClick(button))
+button14 = Button(ventana, text="14|TXD")
+button14.grid(column=2, row=5, padx=(5,5), pady=(5,5))
+button14.config(command = lambda: OnButtonClick(14))
 
-self.button15 = Button(self,ventana, text="15|RXD")
-self.button15.grid(column=2, row=6, padx=(5,5), pady=(5,5))
-self.button15.config(command = lambda button=button15: self.OnButtonClick(button))
+button15 = Button(ventana, text="15|RXD")
+button15.grid(column=2, row=6, padx=(5,5), pady=(5,5))
+button15.config(command = lambda: OnButtonClick(15))
 
-self.button18 = Button(self,ventana, text="18")
-self.button18.grid(column=2, row=7, padx=(5,5), pady=(5,5))
-self.button18.config(command = lambda button=button18: self.OnButtonClick(button))
+button18 = Button(ventana, text="18")
+button18.grid(column=2, row=7, padx=(5,5), pady=(5,5))
+button18.config(command = lambda: OnButtonClick(18))
 
 buttongnd4 = Button(ventana, text="GND")
 buttongnd4.grid(column=2, row=8, padx=(5,5), pady=(5,5))
 
-self.button23 = Button(self,ventana, text="23")
-self.button23.grid(column=2, row=9, padx=(5,5), pady=(5,5))
-self.button23.config(command = lambda button=button23: self.OnButtonClick(button))
+button23 = Button(ventana, text="23")
+button23.grid(column=2, row=9, padx=(5,5), pady=(5,5))
+button23.config(command = lambda: OnButtonClick(23))
 
-self.button24 = Button(self,ventana, text="24")
-self.button24.grid(column=2, row=10, padx=(5,5), pady=(5,5))
-self.button24.config(command = lambda button=button24: self.OnButtonClick(button))
+button24 = Button(ventana, text="24")
+button24.grid(column=2, row=10, padx=(5,5), pady=(5,5))
+button24.config(command = lambda: OnButtonClick(24))
 
 buttongnd5 = Button(ventana, text="GND")
 buttongnd5.grid(column=2, row=11, padx=(5,5), pady=(5,5))
 
-self.button25 = Button(self,ventana, text="25")
-self.button25.grid(column=2, row=12, padx=(5,5), pady=(5,5))
-self.button25.config(command = lambda button=button25: self.OnButtonClick(button))
+button25 = Button(ventana, text="25")
+button25.grid(column=2, row=12, padx=(5,5), pady=(5,5))
+button25.config(command = lambda: OnButtonClick(25))
 
-self.button8 = Button(self,ventana, text="8|CE0")
-self.button8.grid(column=2, row=13, padx=(5,5), pady=(5,5))
-self.button8.config(command = lambda button=button8: self.OnButtonClick(button))
+button8 = Button(ventana, text="8|CE0")
+button8.grid(column=2, row=13, padx=(5,5), pady=(5,5))
+button8.config(command = lambda: OnButtonClick(8))
 
-self.button7 = Button(self,ventana, text="7|CE127")
-self.button7.grid(column=2, row=14, padx=(5,5), pady=(5,5))
-self.button7.config(command = lambda button=button7: self.OnButtonClick(button))
+button7 = Button(ventana, text="7|CE127")
+button7.grid(column=2, row=14, padx=(5,5), pady=(5,5))
+button7.config(command = lambda: OnButtonClick(7))
 
 
 
