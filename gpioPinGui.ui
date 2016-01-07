@@ -1,5 +1,5 @@
 # GUIBUILDER FILE Build 146
-# Created: 2016-01-07 20:17:46 by GUI Builder Build 146
+# Created: 2016-01-07 20:22:36 by GUI Builder Build 146
 language tkinter 8.4
 widget {Tk frame} f {
 	geometry min_column {100 100}
