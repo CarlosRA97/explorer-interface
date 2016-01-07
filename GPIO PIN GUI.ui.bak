@@ -1,5 +1,5 @@
 # GUIBUILDER FILE Build 146
-# Created: 2016-01-07 20:17:46 by GUI Builder Build 146
+# Created: 2016-01-07 19:33:53 by GUI Builder Build 146
 language tkinter 8.4
 widget {Tk frame} f {
 	geometry min_column {100 100}
@@ -29,7 +29,7 @@ widget {Tk label} _label_1 {
 	data TYPE {Tk label}
 }
 widget {Tk button} _button_4 {
-	configure -command OnButtonClick(2)
+	configure -command {lambda: OnButtonClick(2)}
 	configure -text {2 }
 	geometry -column 1
 	geometry -columnspan 1
@@ -42,7 +42,7 @@ widget {Tk button} _button_4 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_6 {
-	configure -command OnButtonClick(3)
+	configure -command {lambda: OnButtonClick(3)}
 	configure -text {3 }
 	geometry -column 1
 	geometry -columnspan 1
@@ -103,8 +103,8 @@ widget {Tk label} _label_5 {
 	data TYPE {Tk label}
 }
 widget {Tk button} _button_8 {
-	configure -command OnButtonClick(4)
-	configure -text { 4 }
+	configure -command {lambda: OnButtonClick(4)}
+	configure -text 4
 	geometry -column 1
 	geometry -columnspan 1
 	geometry -row 5
@@ -128,7 +128,7 @@ widget {Tk label} _label_6 {
 	data TYPE {Tk label}
 }
 widget {Tk button} _button_9 {
-	configure -command OnButtonClick(14)
+	configure -command {lambda: OnButtonClick(14)}
 	configure -text {14 }
 	geometry -column 2
 	geometry -columnspan 1
@@ -141,7 +141,7 @@ widget {Tk button} _button_9 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_10 {
-	configure -command OnButtonClick(15)
+	configure -command {lambda: OnButtonClick(15)}
 	configure -text {15 }
 	geometry -column 2
 	geometry -columnspan 1
@@ -154,7 +154,7 @@ widget {Tk button} _button_10 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_11 {
-	configure -command OnButtonClick(17)
+	configure -command {lambda: OnButtonClick(17)}
 	configure -text 17
 	geometry -column 1
 	geometry -columnspan 1
@@ -167,7 +167,7 @@ widget {Tk button} _button_11 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_12 {
-	configure -command OnButtonClick(27)
+	configure -command {lambda: OnButtonClick(27)}
 	configure -text 27
 	geometry -column 1
 	geometry -columnspan 1
@@ -180,7 +180,7 @@ widget {Tk button} _button_12 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_13 {
-	configure -command OnButtonClick(22)
+	configure -command {lambda: OnButtonClick(22)}
 	configure -text 22
 	geometry -column 1
 	geometry -columnspan 1
@@ -193,7 +193,7 @@ widget {Tk button} _button_13 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_14 {
-	configure -command OnButtonClick(18)
+	configure -command {lambda: OnButtonClick(18)}
 	configure -text 18
 	geometry -column 2
 	geometry -columnspan 1
@@ -206,7 +206,7 @@ widget {Tk button} _button_14 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_15 {
-	configure -command OnButtonClick(23)
+	configure -command {lambda: OnButtonClick(23)}
 	configure -text 23
 	geometry -column 2
 	geometry -columnspan 1
@@ -243,7 +243,7 @@ widget {Tk label} _label_8 {
 	data TYPE {Tk label}
 }
 widget {Tk button} _button_16 {
-	configure -command OnButtonClick(24)
+	configure -command {lambda: OnButtonClick(24)}
 	configure -text 24
 	geometry -column 2
 	geometry -columnspan 1
@@ -256,7 +256,7 @@ widget {Tk button} _button_16 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_18 {
-	configure -command OnButtonClick(10)
+	configure -command {lambda: OnButtonClick(10)}
 	configure -text 10
 	geometry -column 1
 	geometry -columnspan 1
@@ -281,7 +281,7 @@ widget {Tk label} _label_9 {
 	data TYPE {Tk label}
 }
 widget {Tk button} _button_19 {
-	configure -command OnButtonClick(9)
+	configure -command {lambda: OnButtonClick(9)}
 	configure -text 9
 	geometry -column 1
 	geometry -columnspan 1
@@ -294,7 +294,7 @@ widget {Tk button} _button_19 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_20 {
-	configure -command OnButtonClick(25)
+	configure -command {lambda: OnButtonClick(25)}
 	configure -text 25
 	geometry -column 2
 	geometry -columnspan 1
@@ -307,7 +307,7 @@ widget {Tk button} _button_20 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_21 {
-	configure -command OnButtonClick(11)
+	configure -command {lambda: OnButtonClick(11)}
 	configure -text 11
 	geometry -column 1
 	geometry -columnspan 1
@@ -320,7 +320,7 @@ widget {Tk button} _button_21 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_22 {
-	configure -command OnButtonClick(8)
+	configure -command {lambda: OnButtonClick(8)}
 	configure -text 8
 	geometry -column 2
 	geometry -columnspan 1
@@ -333,7 +333,7 @@ widget {Tk button} _button_22 {
 	data TYPE {Tk button}
 }
 widget {Tk button} _button_23 {
-	configure -command OnButtonClick(7)
+	configure -command {lambda: OnButtonClick(7)}
 	configure -text 7
 	geometry -column 2
 	geometry -columnspan 1
