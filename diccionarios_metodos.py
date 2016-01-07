@@ -1,4 +1,5 @@
 from time import sleep
+from tkMessageBox
 
 diccionario = {
 	"redes_sociales": ["Twitter","Facebook","LinkedIn"],
