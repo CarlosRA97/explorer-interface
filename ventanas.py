@@ -2,14 +2,15 @@
 
 from Tkinter import *
 import tkMessageBox
-from RPi.GPIO import *
-# from wiringpi2 import *
+# from RPi.GPIO import *
+# # from wiringpi2 import *
 from time import sleep
 
 pinesGPIO = [2,3,4,17,27,22,10,9,11,14,15,18,23,24,25,8,7]
+pinesGPIO
 
-setmode(BCM)
-setwarnings(False)
+# setmode(BCM)
+# setwarnings(False)
 
 def stp(pin):
 	setup(pin, OUT)
