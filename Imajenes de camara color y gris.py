@@ -19,4 +19,4 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release() #mostramos
-cv2.destroyAllWindows()#crramos
+cv2.destroyAllWindows()#cerramos
