@@ -1,6 +1,7 @@
+#!/usr/bin/env python
 
 '''
-para salir del programa pulta "q"
+para salir del programa pulsa "q"
 '''
 #impotamao los modulos necesarios
 import cv2
