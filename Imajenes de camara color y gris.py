@@ -3,10 +3,10 @@
 '''
 para salir del programa pulsa "q"
 '''
-#impotamao los modulos necesarios
+#importamos los modulos necesarios
 import cv2
 import numpy as np
-# creamos un opjento con el nombre de cap el cual sera el que seconecte a la camara
+# creamos un objeto con el nombre de cap el cual sera el que se conecte a la camara
 # definimos la camara
 cap = cv2.VideoCapture(1)
 #esperamos a que la camara este trasmitiendo
