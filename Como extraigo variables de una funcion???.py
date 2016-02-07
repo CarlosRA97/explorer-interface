@@ -10,9 +10,9 @@ def draw_circle(event,x,y,flags,param):
         cv2.circle(img,(x,y),100,(255,0,0),-1)
 #Este bloque muestra las componentes x e y de los pixeles de la ventana corespondientes al raton
     elif event == cv2.EVENT_MOUSEMOVE:
-            ix,iy = x,y
-            print 'soy xy e estoy funcionando'
-            return ix,iy
+        ix,iy = x,y
+        print 'soy xy e estoy funcionando'
+        return ix,iy
 
 
 
