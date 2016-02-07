@@ -14,11 +14,14 @@ def mouse(event,x,y,flags,param):
     elif event == cv2.EVENT_MOUSEMOVE:
         ix,iy = x,y
         p(ix,iy)
-        print 'soy x(%i) y(%i)  estoy funcionando' % (ix,iy)
-        return ix,iy
+        work(ix,iy)
 
 def p(ix,iy):
     cv2.circle(img,(ix,iy),10,(255,0,0),-1)
+
+def work(ix,iy):
+    print 'soy x(%i) y(%i)  estoy funcionando' % (ix,iy)
+
 
 # Create a black image, a window and bind the function to window
 img = np.zeros((512,512,3), np.uint8)
