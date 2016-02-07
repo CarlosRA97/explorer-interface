@@ -19,5 +19,7 @@ while True:
     # creamos un condicional para cerrar la ventana al presionar la q con un ciclo de espera
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+print __doc__
 cap.release() #mostramos
 cv2.destroyAllWindows()#cerramos
