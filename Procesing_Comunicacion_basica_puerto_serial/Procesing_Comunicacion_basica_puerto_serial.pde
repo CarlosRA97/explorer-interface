@@ -1,7 +1,7 @@
 import processing.serial.*; //inportamos la libreria de procesing
 Serial port; //creamos un opjeto serial "port"
 void setup(){
-  port = new Serial(this, "COM44", 9600); /*definimos "port" como un pueto de comunicon
+  port = new Serial(this, "COM44", 9600); /*definimos com "port" un pueto de comunicon
                                           en eta maquina mediante el puerto "COM44" a una veocidad es 9600*/
 }
 void draw(){} // lo aplicamos para mantener el bucle
