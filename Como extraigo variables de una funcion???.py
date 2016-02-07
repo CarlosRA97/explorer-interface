@@ -4,8 +4,7 @@ import cv2
 import numpy as np
 ix,iy=0,0
 # mouse callback function
-def cuadratica(x):
-    return (x**2 + x + 1)/3
+
 def mouse(event,x,y,flags,param):
     ix,iy = x,y
     if event == cv2.EVENT_LBUTTONDOWN:
