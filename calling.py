@@ -8,7 +8,7 @@ newfibo = fibo(intro)
 nu = 13
 
 if 55 in newfibo.array():
-    print newfibo.lmun()
+    print newfibo.lnum()
     print "lo encontre el 55"
 elif nu in newfibo.array():
     print newfibo.lnum()
