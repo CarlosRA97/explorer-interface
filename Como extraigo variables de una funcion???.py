@@ -4,24 +4,27 @@ import cv2
 import numpy as np
 ix,iy=0,0
 # mouse callback function
+def cuadratica(x):
+    return (x**2 + x + 1)/3
 def draw_circle(event,x,y,flags,param):
 
     if event == cv2.EVENT_LBUTTONDOWN:
-        cv2.circle(img,(x,y),100,(255,0,0),-1)
+        cv2.circle(img,(x,y),50,(255,0,0),-1)
 #Este bloque muestra las componentes x e y de los pixeles de la ventana corespondientes al raton
     elif event == cv2.EVENT_MOUSEMOVE:
         ix,iy = x,y
+        p(ix,iy)
         print 'soy x(%i) y(%i)  estoy funcionando' % (ix,iy)
-        cv2.circle(img,(ix,iy),100,(255,0,0),-1)
+        cv2.circle(img,(ix,iy),10,(255,0,0),-1)
         return ix,iy
 
-
+def p(ix,iy):
+    print ix,iy
 
 # Create a black image, a window and bind the function to window
 img = np.zeros((512,512,3), np.uint8)
 cv2.namedWindow('image')
 cv2.setMouseCallback('image',draw_circle)
-print draw_circle
 
 
 
