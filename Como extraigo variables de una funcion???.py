@@ -7,12 +7,11 @@ ix,iy=0,0
 def cuadratica(x):
     return (x**2 + x + 1)/3
 def mouse(event,x,y,flags,param):
-
+    ix,iy = x,y
     if event == cv2.EVENT_LBUTTONDOWN:
-        cv2.circle(img,(x,y),50,(255,0,0),-1)
+        circleOnClick(ix,iy)
 #Este bloque muestra las componentes x e y de los pixeles de la ventana corespondientes al raton
     elif event == cv2.EVENT_MOUSEMOVE:
-        ix,iy = x,y
         p(ix,iy)
         work(ix,iy)
 
@@ -21,6 +20,9 @@ def p(ix,iy):
 
 def work(ix,iy):
     print 'soy x(%i) y(%i)  estoy funcionando' % (ix,iy)
+
+def circleOnClick(ix,iy):
+    cv2.circle(img,(ix,iy),50,(255,0,0),-1)
 
 
 # Create a black image, a window and bind the function to window
