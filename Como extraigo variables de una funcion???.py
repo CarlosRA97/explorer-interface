@@ -9,6 +9,8 @@ def mouse(event,x,y,flags,param):
     ix,iy = x,y
     if event == cv2.EVENT_LBUTTONDOWN:
         circleOnClick(ix,iy)
+    elif event == cv2.EVENT_RBUTTONDOWN:
+        squareOnClick(ix,iy)
 #Este bloque muestra las componentes x e y de los pixeles de la ventana corespondientes al raton
     elif event == cv2.EVENT_MOUSEMOVE:
         p(ix,iy)
@@ -22,6 +24,9 @@ def work(ix,iy):
 
 def circleOnClick(ix,iy):
     cv2.circle(img,(ix,iy),50,(255,0,0),-1)
+
+def squareOnClick(ix,iy):
+    cv2.square(img,(ix,iy),25,(33,33,33),-1)
 
 
 # Create a black image, a window and bind the function to window
