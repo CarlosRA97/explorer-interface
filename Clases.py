@@ -66,16 +66,36 @@ class Customer(object):
         self.balance += amount
         return self.balance
 
+
 whois = raw_input("Quien eres?: ")
 currency = "euros"
-take = input("Cuanto quiere sacar?: ")
+
 
 _ = Customer(whois)
 print "Hola,",_.name
-print "Tu saldo actual es de",_.balance,currency
 
-_.deposit(300)
-print "Has introducido",_.balance,currency
+def sacar():
+	take = input("Cuanto quiere sacar?: ")
+	if take != "":
+		_.withdraw(take)
+		print "Has retirado %d %s de tu cuenta, saldo actual %d %s" % (take,currency,_.balance,currency)
+	else:
+		print "Escribe una cantidad"
+		sacar()
 
-_.withdraw(take)
-print "Has retirado %d %s de tu cuenta, saldo actual %d %s" % (take,currency,_.balance,currency)
+while True:
+	print "Tu saldo actual es de",_.balance,currency
+
+	op = raw_input("Que operacion quiere realizar?: (sacar|meter)")
+
+	if op == "meter":
+		take = input("Cuanto quiere meter?: ")
+		_.deposit(take)
+		print "Has introducido",_.balance,currency
+
+	elif op == "sacar":
+		sacar()
+
+	else:
+		print "Hasta luego, %s!" % _.name
+		break
