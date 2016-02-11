@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+import porc
+import hashlib
+from random import randint
+
+client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
+
+
 class Auto(object):
 	condicion = "nuevo"
 	def __init__(self, modelo, color, kpl):
@@ -55,8 +62,6 @@ class Customer(object):
     def withdraw(self, amount):
         """Return the balance remaining after withdrawing *amount*
         dollars."""
-        if amount > self.balance:
-            raise RuntimeError('Amount greater than available balance.')
         self.balance -= amount
         return self.balance
 
@@ -64,38 +69,59 @@ class Customer(object):
         """Return the balance remaining after depositing *amount*
         dollars."""
         self.balance += amount
-        return self.balance
+	return self.balance
 
 
-whois = raw_input("Quien eres?: ")
+whois = raw_input("Quien eres?: ").lower()
+passwd = raw_input("Contrasena?: ")
 currency = "euros"
+
 
 
 _ = Customer(whois)
 print "Hola,",_.name
 
+def check():
+	c = client.get('users',_.name)
+	if whois == c['name'] and passwd == c['passwd']:
+		return True
+	else:
+		return False
+
+def dbm():
+	response = client.put('money', _.name, {
+		"balance": _.balance,
+	})
+
 def sacar():
 	take = input("Cuanto quiere sacar?: ")
 	if take != "":
 		_.withdraw(take)
+		dbm()
 		print "Has retirado %d %s de tu cuenta, saldo actual %d %s" % (take,currency,_.balance,currency)
 	else:
 		print "Escribe una cantidad"
 		sacar()
 
-while True:
-	print "Tu saldo actual es de",_.balance,currency
+if check():
+	while True:
+		g = client.get('money',_.name)
+		print "Tu saldo actual es de",g['balance'],currency
 
-	op = raw_input("Que operacion quiere realizar?: (sacar|meter)")
+		op = raw_input("Que operacion quiere realizar?: (sacar|meter|salir) ")
 
-	if op == "meter":
-		take = input("Cuanto quiere meter?: ")
-		_.deposit(take)
-		print "Has introducido",_.balance,currency
+		if op == "meter":
+			take = input("Cuanto quiere meter?: ")
+			_.deposit(take)
+			dbm()
+			print "Has introducido",_.balance,currency
 
-	elif op == "sacar":
-		sacar()
+		elif op == "sacar":
+			if not (g['balance'] == 0) or not None:
+				sacar()
 
-	else:
-		print "Hasta luego, %s!" % _.name
-		break
+		else:
+			print "Hasta luego, %s!" % _.name
+			break
+else:
+	print 'Se te ha olvidado la contrasena?'
