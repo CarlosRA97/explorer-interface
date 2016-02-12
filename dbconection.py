@@ -4,34 +4,32 @@ import hashlib
 
 client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
 
-def register(name,lastname,pw):
+def register(name,pw):
 	passwd = hashlib.sha256(pw).hexdigest()
 	response = client.put('users', name, {
 	  "name": name.lower(),
-	  "lastname": lastname.lower(),
+# 	  "lastname": lastname.lower(),
 	  "passwd": passwd
 	})
 	# make sure the request succeeded
 	response.raise_for_status()
 
-def check(name,lastname,pw):
+def check(name,pw):
 	pawd = hashlib.sha256(pw).hexdigest()
 	search = client.get('users', name)
 
 	if search['name'] == name.lower():
-		if search['lastname'] == lastname.lower():
-			if search['passwd'] == pawd:
-				print "Hola, %s. Has iniciado correctamente" % name.title()
-			else:
-				print "Fuera de aqui bicho"
+		if search['passwd'] == pawd:
+			print "Hola, %s. Has iniciado correctamente" % name.title()
+		else:
+			print "Fuera de aqui bicho"
 	else:
 		print "No estas registrado"
 		ask = raw_input("Quieres registrarte?: ( si | no )")
 		if ask == 'si':
 			n = raw_input("Cual es su nombre?: ").lower()
-			l = raw_input("Cual es su apellido?: ").lower()
 			p = raw_input("Introduzca su contrasena: ").lower()
-			register(n,l,p)
+			register(n,p)
 		elif ask == 'no':
 			pass
 
@@ -49,9 +47,8 @@ def login():
 
 
 n = raw_input("Cual es su nombre?: ").lower()
-l = raw_input("Cual es su apellido?: ").lower()
 p = raw_input("Introduzca su contrasena: ").lower()
 
 print ""
 
-check(n,l,p)
+check(n,p)

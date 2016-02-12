@@ -2,34 +2,34 @@
 
 import porc
 import hashlib
-from random import randint
+from dbconection import register
 
 client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
 
 
-class Auto(object):
-	condicion = "nuevo"
-	def __init__(self, modelo, color, kpl):
-		self.modelo = modelo
-		self.color = color
-		self.kpl = kpl
+# class Auto(object):
+# 	condicion = "nuevo"
+# 	def __init__(self, modelo, color, kpl):
+# 		self.modelo = modelo
+# 		self.color = color
+# 		self.kpl = kpl
 
-	def verAuto(self):
-	    return "Este es un %s color %s que alcanza %s kpl." % (self.modelo,self.color,str(self.kpl))
+# 	def verAuto(self):
+# 	    return "Este es un %s color %s que alcanza %s kpl." % (self.modelo,self.color,str(self.kpl))
 
-	def manejarAuto(self):
-	    self.condicion = "usado"
+# 	def manejarAuto(self):
+# 	    self.condicion = "usado"
 
 
-class AutoElectrico(Auto):
-    def __init__(self,tipoDeBateria,modelo, color, kpl):
-        self.modelo = modelo
-        self.color = color
-        self.kpl = kpl
-        self.tipoDeBateria = tipoDeBateria
+# class AutoElectrico(Auto):
+#     def __init__(self,tipoDeBateria,modelo, color, kpl):
+#         self.modelo = modelo
+#         self.color = color
+#         self.kpl = kpl
+#         self.tipoDeBateria = tipoDeBateria
 
-    def manejarAuto(self):
-	    self.condicion = "como nuevo"
+#     def manejarAuto(self):
+# 	    self.condicion = "como nuevo"
 
 
 
@@ -74,6 +74,7 @@ class Customer(object):
 
 whois = raw_input("Quien eres?: ").lower()
 passwd = raw_input("Contrasena?: ")
+pawd = hashlib.sha256(passwd).hexdigest()
 currency = "euros"
 
 
@@ -81,9 +82,9 @@ currency = "euros"
 _ = Customer(whois)
 print "Hola,",_.name
 
-def check():
+def ck():
 	c = client.get('users',_.name)
-	if whois == c['name'] and passwd == c['passwd']:
+	if whois == c['name'] and pawd == c['passwd']:
 		return True
 	else:
 		return False
@@ -103,7 +104,7 @@ def sacar():
 		print "Escribe una cantidad"
 		sacar()
 
-if check():
+if ck():
 	while True:
 		g = client.get('money',_.name)
 		print "Tu saldo actual es de",g['balance'],currency
@@ -121,7 +122,16 @@ if check():
 				sacar()
 
 		else:
-			print "Hasta luego, %s!" % _.name
+			print "Hasta luego, %s!" % _.name.title()
 			break
 else:
-	print 'Se te ha olvidado la contrasena?'
+	print 'Ha olvidado la contrasena?'
+	ask = raw_input('Esta registrado?(si|no): ')
+	if ask == 'no':
+		ask2 = raw_input('Quiere registrarse?(si|no): ')
+		if ask2 == 'si':
+			register(whois,passwd)
+		else:
+			pass
+	else:
+		print 'Recupera la contrasena y vuelve mas tarde'
