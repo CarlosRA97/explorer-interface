@@ -15,7 +15,8 @@ client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
 # 		self.kpl = kpl
 
 # 	def verAuto(self):
-# 	    return "Este es un %s color %s que alcanza %s kpl." % (self.modelo,self.color,str(self.kpl))
+# return "Este es un %s color %s que alcanza %s kpl." %
+# (self.modelo,self.color,str(self.kpl))
 
 # 	def manejarAuto(self):
 # 	    self.condicion = "usado"
@@ -32,8 +33,6 @@ client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
 # 	    self.condicion = "como nuevo"
 
 
-
-
 # miAuto = AutoElectrico("sales fundidas","Clio", "gris", 16)
 #
 # print miAuto.condicion
@@ -41,7 +40,6 @@ client = porc.Client("38c54a74-cfc1-4936-8a74-9dec1bd61a40")
 # print miAuto.condicion
 #
 # print miAuto.tipoDeBateria
-
 
 
 class Customer(object):
@@ -69,7 +67,7 @@ class Customer(object):
         """Return the balance remaining after depositing *amount*
         dollars."""
         self.balance += amount
-	return self.balance
+        return self.balance
 
 
 whois = raw_input("Quien eres?: ").lower()
@@ -78,60 +76,62 @@ pawd = hashlib.sha256(passwd).hexdigest()
 currency = "euros"
 
 
-
 _ = Customer(whois)
-print "Hola,",_.name
+print "Hola,", _.name
+
 
 def ck():
-	c = client.get('users',_.name)
-	if whois == c['name'] and pawd == c['passwd']:
-		return True
-	else:
-		return False
+    c = client.get('users', _.name)
+    if whois == c['name'] and pawd == c['passwd']:
+        return True
+    else:
+        return False
+
 
 def dbm():
-	response = client.put('money', _.name, {
-		"balance": _.balance,
-	})
+    response = client.put('money', _.name, {
+        "balance": _.balance,
+    })
+
 
 def sacar():
-	take = input("Cuanto quiere sacar?: ")
-	if take != "":
-		_.withdraw(take)
-		dbm()
-		print "Has retirado %d %s de tu cuenta, saldo actual %d %s" % (take,currency,_.balance,currency)
-	else:
-		print "Escribe una cantidad"
-		sacar()
+    take = input("Cuanto quiere sacar?: ")
+    if take != "":
+        _.withdraw(take)
+        dbm()
+        print "Has retirado %d %s de tu cuenta, saldo actual %d %s" % (take, currency, _.balance, currency)
+    else:
+        print "Escribe una cantidad"
+        sacar()
 
 if ck():
-	while True:
-		g = client.get('money',_.name)
-		print "Tu saldo actual es de",g['balance'],currency
+    while True:
+        g = client.get('money', _.name)
+        print "Tu saldo actual es de", g['balance'], currency
 
-		op = raw_input("Que operacion quiere realizar?: (sacar|meter|salir) ")
+        op = raw_input("Que operacion quiere realizar?: (sacar|meter|salir) ")
 
-		if op == "meter":
-			take = input("Cuanto quiere meter?: ")
-			_.deposit(take)
-			dbm()
-			print "Has introducido",_.balance,currency
+        if op == "meter":
+            take = input("Cuanto quiere meter?: ")
+            _.deposit(take)
+            dbm()
+            print "Has introducido", _.balance, currency
 
-		elif op == "sacar":
-			if not (g['balance'] == 0) or not None:
-				sacar()
+        elif op == "sacar":
+            if not (g['balance'] == 0) or not None:
+                sacar()
 
-		else:
-			print "Hasta luego, %s!" % _.name.title()
-			break
+        else:
+            print "Hasta luego, %s!" % _.name.title()
+            break
 else:
-	print 'Ha olvidado la contrasena?'
-	ask = raw_input('Esta registrado?(si|no): ')
-	if ask == 'no':
-		ask2 = raw_input('Quiere registrarse?(si|no): ')
-		if ask2 == 'si':
-			register(whois,passwd)
-		else:
-			pass
-	else:
-		print 'Recupera la contrasena y vuelve mas tarde'
+    print 'Ha olvidado la contrasena?'
+    ask = raw_input('Esta registrado?(si|no): ')
+    if ask == 'no':
+        ask2 = raw_input('Quiere registrarse?(si|no): ')
+        if ask2 == 'si':
+            register(whois, passwd)
+        else:
+            pass
+    else:
+        print 'Recupera la contrasena y vuelve mas tarde'
