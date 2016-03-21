@@ -1,23 +1,28 @@
 import serial
+import threading
 
-Ser = serial.Serial('COM3', 38400, timeout=1)
-if Ser.is_open == True:
-    Ser.close()
-    pass
 
 class Movimiento():
-    def __init__(self, velocidad):
-        self.velocidad = velocidad
+	def __init__(self):
+		self.ser = serial.Serial('COM3', 38400, timeout=1)
+		self.velocidad = velo
+		if self.ser.is_open:
+			self.ser.close()
 
-    def avance(self):
-        Ser.open()
-        Ser.write('a')
-        Ser.close()
+	def avance(self):
+		self.ser.open()
+		self.ser.write('a')
+		self.ser.close()
 
-    def retrocder(self):
-        pass
+	def retroceder(self, velocidad):
+		pass
 
+	def girar_derecha(self, velocidad, grados):
+		pass
+
+	def girar_izquierda(self, velocidad, grados):
+		pass
 
 
 if __name__ == '__main__':
-    op = Movimiento()
+	op = Movimiento(
