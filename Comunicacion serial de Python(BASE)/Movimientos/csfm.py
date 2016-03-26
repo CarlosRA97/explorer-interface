@@ -3,9 +3,9 @@ import threading
 
 
 class Movimiento():
-	def __init__(self):
+	def __init__(self, velocidad):
 		self.ser = serial.Serial('COM3', 38400, timeout=1)
-		self.velocidad = velo
+		self.velocidad = velocidad
 		if self.ser.is_open:
 			self.ser.close()
 
@@ -14,15 +14,17 @@ class Movimiento():
 		self.ser.write('a')
 		self.ser.close()
 
-	def retroceder(self, velocidad):
+	# TODO: Establecer los movimientos mediante serial
+	
+	def retroceder(self):
 		pass
 
-	def girar_derecha(self, velocidad, grados):
+	def girar_derecha(self, grados):
 		pass
 
-	def girar_izquierda(self, velocidad, grados):
+	def girar_izquierda(self, grados):
 		pass
 
 
 if __name__ == '__main__':
-	op = Movimiento(
+	op = Movimiento()
