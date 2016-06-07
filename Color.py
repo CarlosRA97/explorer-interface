@@ -1,3 +1,8 @@
+#Algoritmo de deteccion de colores
+#Por Glar3
+#
+#
+#Detecta objetos verdes, elimina el ruido y busca su centro
 
 import cv2
 import numpy as np
