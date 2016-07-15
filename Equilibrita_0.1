@@ -1,0 +1,62 @@
+boolean Control = false;
+int Constante;
+ void setup() {
+  pinMode(13,OUTPUT);//Declaracion de led 13
+     //Motores
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  digitalWrite(5,LOW);
+  digitalWrite(6,LOW);
+  digitalWrite(10,LOW);
+  digitalWrite(11,LOW);
+  Constante = Sensor_Equilibrio(0);
+  Serial.begin(9600);
+  digitalWrite(13, LOW);//Apagar led 13
+  
+ 
+}
+
+void loop()
+{ Ruedas();
+  }
+
+void Ruedas ()
+{ int Balor_de_X = Sensor_Equilibrio(1);
+  delay(500);
+    if (Balor_de_X+4 > Constante)
+      {Serial.print("adelante ");}
+    else if (Balor_de_X-4 < Constante)
+      {Serial.print("atras ");}
+    else if (Balor_de_X == Constante)
+      {Serial.print ("QUIERTO ");}
+    int p =  Balor_de_X - Constante;
+   Serial.println(p);
+   Serial.println("");
+  }
+
+//esta funcion cra las castanes pasa saber cual es la posicion correta
+int Sensor_Equilibrio(int Code){
+
+  switch (Code)
+    {case 0:
+      delay (2000);
+     Control = true;
+     return analogRead(A0);
+       
+        
+     case 1:
+      return analogRead(A0);
+       
+        
+     default:
+       boolean t = true;
+       for (int i=0; i <= 255; i++){
+        digitalWrite(13,t);
+        t=!t;
+        delay(200);}
+        digitalWrite(13,Control);
+        break;
+      }
+  }
