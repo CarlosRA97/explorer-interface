@@ -11,10 +11,12 @@ img = cv2.imread('Linea laser tst2.jpg')
 
 def parametros():
     datos = img.shape
-    dimensiones = datos[1],datos[0]
-    print 'Parametro' , dimensiones
+    dimensiones = datos[1], datos[0]
+    print 'Parametro', dimensiones
     return dimensiones
-def raton(event,x,y,flags,param):
+
+
+def raton(event, x, y, flags,param):
     if event == cv2.EVENT_LBUTTONDBLCLK:    #comprueba si el evento llamado es del clik
         print img[x, y]                    #imprime el balor del pixel
         print flags
@@ -27,8 +29,8 @@ def raton(event,x,y,flags,param):
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 rojo_max = np.array([254,255,255])
 rojo_min = np.array([0,0,230])
-masc = cv2.inRange(hsv,rojo_min,rojo_max)
-color = cv2.bitwise_and(img,img,mask=masc)
+masc = cv2.inRange(hsv, rojo_min, rojo_max)
+color = cv2.bitwise_and(img, img, mask=masc)
 
 #ventana
 
