@@ -15,8 +15,8 @@ img = cv2.imread('Linea laser tst2.jpg')
 # Mascaras
 
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-rojo_max = np.array([254,255,255])
-rojo_min = np.array([0,0,230])
+rojo_max = np.array([254, 255, 255])
+rojo_min = np.array([0, 0, 230])
 masc = cv2.inRange(hsv, rojo_min, rojo_max)
 color = cv2.bitwise_and(img, img, mask=masc)
 
@@ -24,7 +24,7 @@ color = cv2.bitwise_and(img, img, mask=masc)
 def imageSize():
     datos = img.shape
     dimensiones = datos[1], datos[0]
-    print 'Parametro', dimensiones
+    print 'Parametro: ', dimensiones
     return dimensiones
 
 
