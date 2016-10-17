@@ -1,51 +1,51 @@
 """
-Este progarama se divide en dos funciones 'parametros' => se encarga de extraer y mostrar el anco y el largo
-de la imajen: y 'raton' => que se encarga de extraer el comos del pixel con la situacion del raton
-
+Este es el programa final de lectro de linias pero no consigo limpiar lo suficiente la linia para poderleer con esactitu los pixeles
 """
-
 import cv2
 import numpy as np
+from matplotlib import pyplot as plt
+
+cam = cv2.VideoCapture(1)
 
 
-# Imagen
+print cam.get(3)
 
-img = cv2.imread('Linea laser tst2.jpg')
-
-# Mascaras
-
-hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-rojo_max = np.array([254, 255, 255])
-rojo_min = np.array([0, 0, 230])
-masc = cv2.inRange(hsv, rojo_min, rojo_max)
-color = cv2.bitwise_and(img, img, mask=masc)
+def dis():
+    num = masc
+    xy_val = np.nonzero(num)
+    xy_val = np.array([np.nonzero(xy_val)])
+    xy_val = np.transpose(np.nonzero(xy_val))
+    print xy_val
 
 
-def imageSize():
-    datos = img.shape
-    dimensiones = datos[1], datos[0]
-    print 'Parametro: ', dimensiones
-    return dimensiones
+
+while(1):
+    rvel, frame= cam.read()
 
 
-def mousePosWhenClick(event, x, y, flags, param):
-    if event == cv2.EVENT_LBUTTONDBLCLK:    #comprueba si el evento llamado es del clik
-        print img[x, y]                    #imprime el balor del pixel
-        print flags
-        print param
+    #caps
 
-        
-# Ventana
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    rojo_max = np.array([255,196,255])
+    rojo_min = np.array([0,0,54])
+    masc = cv2.inRange(hsv, rojo_min, rojo_max)
+    edges = cv2.Canny(frame, 100, 200)
+    kernel = np.ones((6, 6), np.uint8)
+    transformacion = cv2.morphologyEx(edges, cv2.MOTION_HOMOGRAPHY, kernel)
+    sobelx8u = cv2.Sobel(frame, cv2.CV_8U, 1, 0, ksize=5)
 
-def main():
-    cv2.imshow('img', img)
-    cv2.imshow('hsv', hsv)
+
+
+    cv2.imshow('cam', frame)
     cv2.imshow('masc', masc)
-    cv2.setMouseCallback('hsv', mousePosWhenClick)
-    cv2.imshow('color', color)
+    cv2.imshow('Edge', edges)
+    cv2.imshow('filtrado', transformacion)
+    cv2.imshow('sobelx8u', sobelx8u)
 
+    #dis()
 
-main()
-cv2.waitKey(0)
-#cv2.imwrite('Img_hsv.png',hsv)  #cre auna img estraida de la capa hsv
+    tecla = cv2.waitKey(5) & 0xFF
+    if tecla == 27:
+        break
 cv2.destroyAllWindows()
+
